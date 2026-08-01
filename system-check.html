@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="lo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>System Check · Lao Web Studio V2.9.1</title>
+  <link rel="stylesheet" href="styles.css?v=2.9.1">
+  <style>
+    body{background:#f4f7fb;color:#102442}
+    .check-shell{width:min(900px,92%);margin:45px auto}
+    .check-card{background:#fff;border:1px solid #dce5ef;border-radius:22px;
+      padding:24px;box-shadow:0 16px 45px #17345218}
+    .check-row{display:grid;grid-template-columns:240px 1fr;gap:12px;
+      padding:13px 0;border-bottom:1px solid #e8edf3}
+    .check-row:last-child{border-bottom:0}
+    .ok{color:#067647}.bad{color:#b42318}.warn{color:#b54708}
+    code{word-break:break-all;white-space:pre-wrap}
+    @media(max-width:650px){.check-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="check-shell">
+    <section class="check-card">
+      <h1>Lao Web Studio V2.9.1</h1>
+      <p>ตรวจว่า GitHub และ Supabase ใช้ระบบเดียวกัน</p>
+      <div id="check-results"><p>Checking…</p></div>
+      <p>
+        <a href="index.html">← Website</a> ·
+        <a href="admin-login.html">Admin Login</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=2.9.1"></script>
+  <script src="supabase-client.js?v=2.9.1"></script>
+  <script>
+    (async () => {
+      const root = document.getElementById('check-results');
+      const esc = value => String(value ?? '').replace(/[&<>"]/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'
+      }[c]));
+
+      const rows = [];
+      rows.push([
+        'Website version',
+        '2.9.1',
+        'ok'
+      ]);
+      rows.push([
+        'Supabase configured',
+        String(window.LWS_SUPABASE_CONFIGURED),
+        window.LWS_SUPABASE_CONFIGURED ? 'ok' : 'bad'
+      ]);
+      rows.push([
+        'Project reference',
+        window.LWS_SUPABASE_PROJECT_REF || '—',
+        window.LWS_SUPABASE_PROJECT_REF ? 'ok' : 'bad'
+      ]);
+
+      if (window.lwsSupabase) {
+        const health = await window.lwsSupabaseHealthCheck();
+        rows.push([
+          'Database health',
+          health.ok ? 'Connected' : (health.error || health.code || 'Failed'),
+          health.ok ? 'ok' : 'bad'
+        ]);
+        rows.push([
+          'Database version',
+          health.data?.version || '—',
+          ['2.9.0','2.9.1'].includes(health.data?.version) ? 'ok' : 'warn'
+        ]);
+        rows.push([
+          'Public lead RPC',
+          String(health.data?.lead_rpc ?? false),
+          health.data?.lead_rpc === true ? 'ok' : 'bad'
+        ]);
+
+        const sessionResult = await window.lwsSupabase.auth.getSession();
+        const session = sessionResult.data?.session;
+        rows.push([
+          'Login session',
+          session ? session.user.email : 'Not signed in',
+          session ? 'ok' : 'warn'
+        ]);
+
+        if (session) {
+          const profileResult = await window.lwsSupabase
+            .from('profiles')
+            .select('email,full_name,role,is_active')
+            .eq('id', session.user.id)
+            .maybeSingle();
+
+          rows.push([
+            'Profile',
+            profileResult.error
+              ? profileResult.error.message
+              : JSON.stringify(profileResult.data || null),
+            profileResult.data ? 'ok' : 'bad'
+          ]);
+        }
+      }
+
+      root.innerHTML = rows.map(([label,value,state]) => `
+        <div class="check-row">
+          <b>${esc(label)}</b>
+          <code class="${state}">${esc(value)}</code>
+        </div>
+      `).join('');
+    })();
+  </script>
+</body>
+</html>

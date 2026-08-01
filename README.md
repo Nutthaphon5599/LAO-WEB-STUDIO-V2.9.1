@@ -1,2 +1,3 @@
-# LAO-WEB-STUDIO-V2.9.1
-LAO-WEB-STUDIO-V2.9.1
+# Lao Web Studio V2.9.1 Stable Fix
+
+Read `README-V2.9.1-STABLE-FIX.md` before deployment.

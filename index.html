@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="lo">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Lao Web Studio - professional website design and development in Laos." />
+  <title>V2.3 · Lao Web Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2.9.1" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#home"><img src="assets/logo.png" alt="Lao Web Studio logo"><span>LAO WEB STUDIO</span></a>
+  <nav id="nav"></nav>
+  <div class="header-actions">
+    <select id="lang" aria-label="Language"><option value="lo">ລາວ</option><option value="th">ไทย</option><option value="en">EN</option></select>
+    <a class="btn btn-primary small" href="#contact" data-i="quote"></a>
+  </div>
+</header>
+<main>
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow" data-i="eyebrow"></div>
+    <h1><span>LAO WEB</span><strong>STUDIO</strong></h1>
+    <p class="lead" data-i="heroText"></p>
+    <ul class="checks">
+      <li data-i="check1"></li><li data-i="check2"></li><li data-i="check3"></li>
+    </ul>
+    <div class="hero-buttons">
+      <a class="btn btn-primary" href="#contact" data-i="quote"></a>
+      <a class="btn btn-secondary" href="#portfolio" data-i="viewWork"></a>
+    </div>
+    <div class="stats"><div><b>3</b><span data-i="languages"></span></div><div><b>100%</b><span>Responsive</span></div><div><b>SEO</b><span>Ready</span></div></div>
+  </div>
+  <div class="hero-visual">
+    <div class="orb"></div>
+    <img src="assets/logo.png" alt="Lao Web Studio">
+  </div>
+</section>
+<section class="services" id="services">
+  <div class="section-head"><span data-i="servicesLabel"></span><h2 data-i="servicesTitle"></h2><p data-i="servicesText"></p></div>
+  <div class="service-grid">
+    <article><div class="icon">✦</div><h3 data-i="s1t"></h3><p data-i="s1d"></p></article>
+    <article><div class="icon">⌘</div><h3 data-i="s2t"></h3><p data-i="s2d"></p></article>
+    <article><div class="icon">▱</div><h3 data-i="s3t"></h3><p data-i="s3d"></p></article>
+    <article><div class="icon">↗</div><h3 data-i="s4t"></h3><p data-i="s4d"></p></article>
+  </div>
+</section>
+<section id="portfolio" class="portfolio">
+  <div class="section-head"><span data-i="portfolioLabel"></span><h2 data-i="portfolioTitle"></h2></div>
+  <div id="portfolio-grid" class="portfolio-grid" aria-live="polite"></div>
+  <p id="portfolio-empty" class="portfolio-empty" hidden></p>
+</section>
+<section id="pricing" class="pricing">
+  <div class="section-head"><span data-i="pricingLabel"></span><h2 data-i="pricingTitle"></h2><p data-i="pricingText"></p></div>
+  <div class="price-grid">
+    <article><h3 data-i="p1"></h3><div class="price"><span data-price="starter">200.000</span><span data-currency="starter">ກີບ</span></div><ul><li data-i="p1a"></li><li data-i="p1b"></li><li data-i="p1c"></li></ul><a href="#contact" class="btn btn-secondary" data-i="choose"></a></article>
+    <article><h3 data-i="p2"></h3><div class="price"><span data-price="business">500.000</span><span data-currency="business">ກີບ</span></div><ul><li data-i="p2a"></li><li data-i="p2b"></li><li data-i="p2c"></li></ul><a href="#contact" class="btn btn-primary" data-i="choose"></a></article>
+    <article><h3 data-i="p3"></h3><div class="price"><span data-price="premium">800.000</span><span data-currency="premium">ກີບ</span></div><ul><li data-i="p3a"></li><li data-i="p3b"></li><li data-i="p3c"></li></ul><a href="#contact" class="btn btn-secondary" data-i="choose"></a></article>
+  </div>
+</section>
+<section id="contact" class="contact">
+  <div class="contact-info"><span class="section-kicker" data-i="contactLabel"></span><h2 data-i="contactTitle"></h2><p data-i="contactText"></p>
+    <div class="contact-list">
+      <a href="tel:02052811825"><b>Phone</b><span>02052811825</span></a>
+      <a href="https://wa.me/8562052811825" target="_blank"><b>WhatsApp</b><span>02052811825</span></a>
+      <a href="mailto:info@laowebstudio.com"><b>Email</b><span>info@laowebstudio.com</span></a>
+      <a href="https://www.facebook.com/" target="_blank"><b>Facebook</b><span>Lao Web Studio</span></a>
+      <a href="https://maps.app.goo.gl/dkVz8CGwvTdxGqkg8?g_st=iw" target="_blank"><b>Google Maps</b><span>ບ້ານ ຕານມີໄຊ, ເມືອງ ໄຊທານີ</span></a>
+    </div>
+  </div>
+  <form id="quote-form" class="contact-form quote-form">
+    <div class="form-title-row"><div><small data-i="quoteFormLabel"></small><h3 data-i="quoteFormTitle"></h3></div><span class="secure-badge">Supabase CRM</span></div>
+    <div class="quote-grid">
+      <label><span data-i="name"></span><input id="lead-name" name="name" autocomplete="name" required></label>
+      <label><span data-i="phone"></span><input id="lead-phone" name="phone" inputmode="tel" autocomplete="tel" required></label>
+      <label><span>Email</span><input id="lead-email" type="email" name="email" autocomplete="email"></label>
+      <label><span data-i="businessName"></span><input id="lead-business" name="business_name"></label>
+      <label><span data-i="serviceType"></span><select id="lead-service" name="service"><option value="website" data-i="serviceWebsite"></option><option value="ecommerce" data-i="serviceEcommerce"></option><option value="system" data-i="serviceSystem"></option><option value="other" data-i="serviceOther"></option></select></label>
+      <label><span data-i="budget"></span><input id="lead-budget" name="budget" data-i-placeholder="budgetPlaceholder"></label>
+      <label><span data-i="preferredContact"></span><select id="lead-contact" name="preferred_contact"><option value="whatsapp">WhatsApp</option><option value="phone" data-i="phone"></option><option value="email">Email</option></select></label>
+    </div>
+    <label><span data-i="message"></span><textarea id="lead-message" name="message" rows="5" required></textarea></label>
+    <button id="quote-submit" class="btn btn-primary" type="submit" data-i="sendQuote"></button>
+    <p id="quote-status" class="form-status" aria-live="polite"></p>
+  </form>
+</section>
+</main>
+<footer><div class="brand foot-brand"><img src="assets/logo.png" alt=""><span>LAO WEB STUDIO</span></div><p>© 2026 Lao Web Studio. All rights reserved.</p><a class="admin-link" href="admin.html">Website Admin</a></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js?v=2.9.1"></script>
+<script src="supabase-client.js?v=2.9.1"></script><script src="stability-v28.js?v=2.9.1"></script><script src="i18n-v271.js?v=2.9.1"></script>
+<script src="projects.js?v=2.9.1"></script>
+<script src="pricing.js?v=2.9.1"></script>
+<script src="leads.js?v=2.9.1"></script>
+<script src="script.js?v=2.9.1"></script>
+<script>renderPricing().catch(console.error);</script>
+</body>
+</html>
